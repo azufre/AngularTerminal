@@ -1,0 +1,45 @@
+<h2>Create viaje</h2>
+<form [formGroup]="createViajeForm" (ngSubmit)="onSubmit()">    
+    <div class="form-group">
+        <label for="Ciudad">Ciudad</label>
+        <input type="text" formControlName="Ciudad" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Ciudad.errors }" />
+        <div *ngIf="submitted && f.Ciudad.errors" class="invalid-feedback">
+            <div *ngIf="f.Ciudad.errors.required">Ciudad is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="HoraSalida">HoraSalida</label>
+        <input type="number" formControlName="HoraSalida" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.HoraSalida.errors }" />
+        <div *ngIf="submitted && f.HoraSalida.errors" class="invalid-feedback">
+            <div *ngIf="f.HoraSalida.errors.required">HoraSalida is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="HoraEntrada">HoraEntrada</label>
+        <input type="number" formControlName="HoraEntrada" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.HoraEntrada.errors }" />
+        <div *ngIf="submitted && f.HoraEntrada.errors" class="invalid-feedback">
+            <div *ngIf="f.HoraEntrada.errors.required">HoraEntrada is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="Costo">Costo</label>
+        <input type="number" formControlName="Costo" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.Costo.errors }" />
+        <div *ngIf="submitted && f.Costo.errors" class="invalid-feedback">
+            <div *ngIf="f.Costo.errors.required">Costo is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="IdBus">Bus</label>
+        <select id="IdBus" name="idBus" class="form-control" size="10" ng-model ="chooseBuses" [ngClass]="{ 'is-invalid': submitted && f.IdBus.errors }">                                
+            <option ng:repeat="bus in chooseBuses" value="{{bus.IdBus}}">
+                {{country.placa}}
+            </option>
+        </select>
+        <div *ngIf="submitted && f.IdBus.errors" class="invalid-feedback">
+            <div *ngIf="f.IdBus.errors.required">Bus is required</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">Create</button>        
+    </div>
+</form>
